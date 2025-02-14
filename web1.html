@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <title>Exemplo Simples com Markdown</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../dist/reveal.css">
+    <link rel="stylesheet" href="../dist/theme/black.css" id="theme">
+
+    <link rel="stylesheet" href="../plugin/highlight/monokai.css">
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!-- Slide 1 escrito em Markdown -->
+            <section data-markdown data-align="center" data-horizontal-align="middle">
+                <textarea data-template>
+            ## Programação para WEB
+            Prof. Nator Junior Carvalho da Costa
+                </textarea>
+            </section>
+            
+            <section data-markdown>
+                <textarea data-template>
+                ## Segundo Slide
+
+                  ```js [712: 1-2|3|4]
+                  let a = 1;
+                  let b = 2;
+                  let c = x => 1 + 2 + x;
+                  c(3);
+                  ```
+                </textarea>
+            </section>
+
+            <!-- Slide 2 escrito em Markdown -->
+            <section data-markdown>
+                <textarea data-template>
+## Segundo Slide
+
+Você pode criar slides com Markdown usando o Reveal.js.
+          </textarea>
+            </section>
+        </div>
+    </div>
+
+    <script src="../dist/reveal.js"></script>
+    <script src="../plugin/markdown/markdown.js"></script>
+    <script src="../plugin/highlight/highlight.js"></script>
+    <script src="../plugin/notes/notes.js"></script>
+    <script src="../plugin/math/math.js"></script>
+    <script>
+        Reveal.initialize({
+            markdown: {
+                smartypants: true,
+            },
+            center: true,
+            controls: true,
+            highlight: {
+                // beforeHighlight: (hljs) => hljs.registerLanguage(/*...*/),
+            },
+            plugins: [RevealMarkdown, RevealHighlight]
+        });
+    </script>
+</body>
+
+</html>
