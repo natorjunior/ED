@@ -16,7 +16,7 @@
       class="absolute left-4 top-5 md:hidden bg-blue-500 hover:bg-blue-700 transition-colors p-2 rounded focus:outline-none" 
       onclick="toggleSidebar()"
       aria-label="Abrir Menu">
-      <!-- Ícone hambúrguer simples (pode substituir por SVG/ícone de sua preferência) -->
+      <!-- Ícone hambúrguer -->
       <div class="w-5 h-0.5 bg-white mb-1"></div>
       <div class="w-5 h-0.5 bg-white mb-1"></div>
       <div class="w-5 h-0.5 bg-white"></div>
@@ -45,7 +45,7 @@
             class="w-20 h-20 rounded-full object-cover shadow-md">
           <div>
             <h3 class="text-lg font-medium text-gray-900 leading-tight">Prof. Msc Nator Junior</h3>
-            <p class="text-sm text-gray-600 mt-1">
+            <p class="text-sm text-gray-600 mt-1" style="text-align: justify;">
               Mestre em Ciência da Computação, com ênfase em 
               <strong class="font-medium text-gray-800">Programação, Otimização, Algoritmos e Inteligência Computacional</strong>.
             </p>
@@ -95,7 +95,7 @@
       <!-- Seção Sobre a Disciplina -->
       <section class="bg-white p-6 rounded-lg shadow-lg">
         <h2 class="text-2xl font-semibold text-gray-800">Sobre a Disciplina</h2>
-        <p class="text-gray-600 mt-2 leading-relaxed">
+        <p class="text-gray-600 mt-2 leading-relaxed" style="text-align: justify;">
           Nesta disciplina, você aprenderá os conceitos fundamentais de Estrutura de Dados. Exploraremos 
           <span class="font-medium text-gray-800">Linguagem C, Funções, Ponteiros, Estruturas, Recursividades, Notação Assintótica, Listas, Pilhas, Filas, Árvores, Métodos de Busca, Tabela Hash e Grafos</span>, além de exemplos práticos de implementação 
           na linguagem de programação em C/C++. Nosso objetivo é desenvolver um raciocínio analítico 
@@ -138,7 +138,7 @@
         const aulaLinks = links.filter(link => link.href.includes('aula') && link.href.endsWith('.html'));
         
         if (aulaLinks.length === 0) {
-          listaAulas.innerHTML = '<p class="text-gray-500">Nenhuma aula disponível no momento.</p>';
+          listaAulas.innerHTML = '<p class="text-gray-500" style="text-align: justify;">Nenhuma aula disponível no momento.</p>';
           return;
         }
         
@@ -151,14 +151,14 @@
                      hover:bg-blue-600 transition-colors 
                      text-center font-semibold"
             >
-              Aula ${index + 1}
+              📚 Aula ${index + 1}
             </a>
           `;
           listaAulas.appendChild(li);
         });
       } catch (error) {
         console.error("Erro ao carregar aulas: ", error);
-        listaAulas.innerHTML = '<p class="text-red-500">Erro ao carregar aulas.</p>';
+        listaAulas.innerHTML = '<p class="text-red-500" style="text-align: justify;">Erro ao carregar aulas.</p>';
       }
     });
   </script>
