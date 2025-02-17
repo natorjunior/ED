@@ -1,8 +1,166 @@
-<html>
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Estrutura de Dados</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-  <body>
-    <h1><a href="web1.html">a</a></h1>
-  </body>
+<body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
+
+  <!-- Cabeçalho -->
+  <header class="relative bg-gradient-to-r from-blue-600 to-blue-500 py-6 text-white text-center shadow-md">
+    <!-- Botão Hambúrguer (Mobile) -->
+    <button 
+      class="absolute left-4 top-5 md:hidden bg-blue-500 hover:bg-blue-700 transition-colors p-2 rounded focus:outline-none" 
+      onclick="toggleSidebar()"
+      aria-label="Abrir Menu">
+      <!-- Ícone hambúrguer simples (pode substituir por SVG/ícone de sua preferência) -->
+      <div class="w-5 h-0.5 bg-white mb-1"></div>
+      <div class="w-5 h-0.5 bg-white mb-1"></div>
+      <div class="w-5 h-0.5 bg-white"></div>
+    </button>
+    
+    <h1 class="text-4xl font-bold">Disciplina de Estrutura de Dados</h1>
+    <p class="text-lg mt-1 opacity-90">Aulas e materiais de estudo</p>
+  </header>
+
+  <!-- Container Principal (Sidebar + Conteúdo) -->
+  <div class="flex flex-1 relative">
+    
+    <!-- Sidebar (Responsivo) -->
+    <aside 
+      id="sidebar"
+      class="fixed top-0 left-0 bottom-0 z-10 w-64 md:w-72 bg-white shadow-xl p-5 transform -translate-x-full md:translate-x-0 transition-transform 
+             md:static md:flex-shrink-0 md:h-auto"
+      aria-label="Menu lateral">
+      
+      <div class="mb-6">
+        <h2 class="text-xl font-semibold text-gray-700">Professor</h2>
+        <div class="flex items-center mt-4 space-x-4">
+          <img 
+            src="https://avatars.githubusercontent.com/u/51802728?v=4"
+            alt="Foto do Professor" 
+            class="w-20 h-20 rounded-full object-cover shadow-md">
+          <div>
+            <h3 class="text-lg font-medium text-gray-900 leading-tight">Prof. Msc Nator Junior</h3>
+            <p class="text-sm text-gray-600 mt-1">
+              Mestre em Ciência da Computação, com ênfase em 
+              <strong class="font-medium text-gray-800">Programação, Otimização, Algoritmos e Inteligência Computacional</strong>.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <hr class="my-4 border-gray-200">
+
+      <!-- Exemplo de Menu Lateral -->
+      <nav>
+        <h2 class="text-xl font-semibold text-gray-700">Menu</h2>
+        <ul class="mt-3 space-y-2">
+          <li>
+            <a 
+              href="#" 
+              class="block py-2 px-3 rounded transition-colors text-gray-700 
+                     hover:bg-blue-50 hover:text-blue-600"
+            >
+              Início
+            </a>
+          </li>
+          <li>
+            <a 
+              href="#" 
+              class="block py-2 px-3 rounded transition-colors text-gray-700 
+                     hover:bg-blue-50 hover:text-blue-600"
+            >
+              Sobre
+            </a>
+          </li>
+          <li>
+            <a 
+              href="#" 
+              class="block py-2 px-3 rounded transition-colors text-gray-700 
+                     hover:bg-blue-50 hover:text-blue-600"
+            >
+              Contato
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Conteúdo Principal -->
+    <main class="flex-1 mx-auto w-full max-w-4xl p-4 sm:p-6 mt-4 md:mt-0">
+      <!-- Seção Sobre a Disciplina -->
+      <section class="bg-white p-6 rounded-lg shadow-lg">
+        <h2 class="text-2xl font-semibold text-gray-800">Sobre a Disciplina</h2>
+        <p class="text-gray-600 mt-2 leading-relaxed">
+          Nesta disciplina, você aprenderá os conceitos fundamentais de Estrutura de Dados. Exploraremos 
+          <span class="font-medium text-gray-800">Linguagem C, Funções, Ponteiros, Estruturas, Recursividades, Notação Assintótica, Listas, Pilhas, Filas, Árvores, Métodos de Busca, Tabela Hash e Grafos</span>, além de exemplos práticos de implementação 
+          na linguagem de programação em C/C++. Nosso objetivo é desenvolver um raciocínio analítico 
+          para resolver problemas de forma eficiente, entendendo a complexidade de cada solução.
+        </p>
+      </section>
+
+      <!-- Seção Aulas Disponíveis -->
+      <section class="bg-white p-6 rounded-lg shadow-lg mt-8">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Aulas Disponíveis</h2>
+        <ul id="aulas-list" class="space-y-3"></ul>
+      </section>
+    </main>
+  </div>
+
+  <!-- Rodapé -->
+  <footer class="bg-gray-800 text-gray-200 text-center py-4 mt-4">
+    <p class="text-sm">
+      &copy; 2025 | Estrutura de Dados - Prof. Nome Sobrenome. Todos os direitos reservados.
+    </p>
+  </footer>
+
+  <!-- Script para carregar as aulas + Toggle da Sidebar -->
+  <script>
+    // Mostrar/Ocultar sidebar em telas pequenas
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.classList.toggle("-translate-x-full");
+    }
+
+    // Buscar lista de aulas
+    document.addEventListener("DOMContentLoaded", async function() {
+      const listaAulas = document.getElementById("aulas-list");
+      try {
+        const response = await fetch('/aulas/'); // Ajuste conforme necessário
+        const html = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const links = Array.from(doc.querySelectorAll('a'));
+        const aulaLinks = links.filter(link => link.href.includes('aula') && link.href.endsWith('.html'));
+        
+        if (aulaLinks.length === 0) {
+          listaAulas.innerHTML = '<p class="text-gray-500">Nenhuma aula disponível no momento.</p>';
+          return;
+        }
+        
+        aulaLinks.forEach((link, index) => {
+          let li = document.createElement("li");
+          li.innerHTML = `
+            <a 
+              href="${link.href}" 
+              class="block p-4 bg-blue-500 text-white rounded-lg 
+                     hover:bg-blue-600 transition-colors 
+                     text-center font-semibold"
+            >
+              Aula ${index + 1}
+            </a>
+          `;
+          listaAulas.appendChild(li);
+        });
+      } catch (error) {
+        console.error("Erro ao carregar aulas: ", error);
+        listaAulas.innerHTML = '<p class="text-red-500">Erro ao carregar aulas.</p>';
+      }
+    });
+  </script>
+</body>
 </html>
