@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="utf-8">
+  <title>Revisão de Lógica em C</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Reveal.js -->
+  <link rel="stylesheet" href="./dist/reveal.css">
+  <link rel="stylesheet" href="./dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="./plugin/highlight/monokai.css">
+
+  <!-- Estilo customizado para cor e tipografia -->
+  <style>
+    /* Fundo escuro e texto claro para todo o deck */
+    .reveal .slides {
+      background: linear-gradient(to bottom, #232526, #414345);
+      color: #f1f1f1;
+    }
+
+    /* Remover centro automático dos slides e permitir layout mais livre */
+    .reveal {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    /* Títulos em cor de destaque */
+    .reveal h1,
+    .reveal h2 {
+      color: #17b2c3;
+      margin-bottom: 0.5em;
+    }
+
+    /* Parágrafos e listas em branco */
+    .reveal p,
+    .reveal li {
+      font-size: 1.1em;
+      color: #ffffff;
+    }
+
+    /* Código com fundo levemente mais escuro */
+    .reveal pre code {
+      font-size: 1em;
+      background: #2b2b2b;
+      border-radius: 6px;
+      padding: 10px;
+    }
+
+    /* Box de atividade */
+    .activity-box {
+      border: 2px dashed #17b2c3;
+      padding: 15px;
+      margin-top: 15px;
+      border-radius: 6px;
+      background: #333;
+      color: #ffffff;
+    }
+
+    .activity-box strong {
+      color: #17b2c3;
+    }
+
+    /* Ajuste do tamanho dos tópicos */
+    ul {
+      line-height: 1.6em;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Slide 1 - Título -->
+      <section data-background-color="#232526" data-align="center">
+        <h2>Revisão de Lógica em C</h2>
+        <p style="font-size:1.2em;">Prof. Nator Junior Carvalho da Costa</p>
+        <p style="margin-top: 20px;">
+          <em>Variáveis, Operadores e Condicionais</em>
+        </p>
+      </section>
+
+      <!-- Slide 2 - Apresentação Teórica: Linguagem C -->
+      <section data-background-color="#232526">
+        <h2>Linguagem C</h2>
+        <ul>
+          <li>Base para raciocínio lógico e estruturas de dados.</li>
+          <li>Sintaxe simples e direta.</li>
+          <li>Excelentes fundamentos para programação de sistemas.</li>
+        </ul>
+      </section>
+
+      <!-- Slide 3 - Teoria: Fluxo de Programa -->
+      <section data-background-color="#232526">
+        <h2>Fluxo de Programa</h2>
+        <ul>
+          <li>Execução linha a linha.</li>
+          <li>Desvios condicionais alteram o percurso.</li>
+          <li>Uso de variáveis para armazenar valores intermediários.</li>
+        </ul>
+      </section>
+
+      <!-- Slide 4 - Declaração de Variáveis (Código) -->
+      <section data-background-color="#232526">
+        <h2>Declaração de Variáveis</h2>
+        <pre><code class="hljs c" data-line-numbers="3-9">
+#include <stdio.h>
+
+int main() {
+    int idade = 20;
+    float peso = 70.5;
+    char inicial = 'N';
+
+    printf("Idade: %d\n", idade);
+    printf("Peso: %.1f\n", peso);
+    printf("Inicial: %c\n", inicial);
+
+    return 0;
+}
+        </code></pre>
+
+        <div class="activity-box">
+          <strong>Atividade 1:</strong>  
+          Declare duas variáveis <code>float</code> (<code>altura</code> e <code>peso</code>) e exiba-as na tela.
+        </div>
+      </section>
+
+      <!-- Slide 5 - Operadores Aritméticos -->
+      <section data-background-color="#232526">
+        <h2>Operadores Aritméticos</h2>
+        <ul>
+          <li>+, -, *, /, %</li>
+          <li>Realizam operações matemáticas básicas.</li>
+        </ul>
+
+        <pre><code class="hljs c" data-line-numbers="3-10">
+#include <stdio.h>
+
+int main() {
+    int a = 10, b = 3;
+    printf("Soma: %d\n", a + b);
+    printf("Subtração: %d\n", a - b);
+    printf("Multiplicação: %d\n", a * b);
+    printf("Divisão: %d\n", a / b);
+    printf("Resto (%%): %d\n", a % b);
+
+    return 0;
+}
+        </code></pre>
+
+        <div class="activity-box">
+          <strong>Atividade 2:</strong>  
+          Calcule a <em>média</em> de três notas (inteiras) e exiba como <code>float</code>.
+        </div>
+      </section>
+
+      <!-- Slide 6 - Operadores Relacionais e Lógicos (Teoria) -->
+      <section data-background-color="#232526">
+        <h2>Operadores Relacionais &amp; Lógicos</h2>
+        <ul>
+          <li><strong>Relacionais:</strong> ==, !=, >, <, >=, <=</li>
+          <li><strong>Lógicos:</strong> && (E), || (OU), ! (NÃO)</li>
+        </ul>
+      </section>
+
+      <!-- Slide 7 - Operadores Relacionais e Lógicos (Código) -->
+      <section data-background-color="#232526">
+        <h2>Exemplo</h2>
+        <pre><code class="hljs c" data-line-numbers="4-12">
+#include <stdio.h>
+
+int main() {
+    int x = 5, y = 10;
+    printf("(x == y) = %d\n", (x == y));
+    printf("(x != y) = %d\n", (x != y));
+    printf("(x < y && x > 0) = %d\n", (x < y && x > 0));
+    printf("(x > y || x == 5) = %d\n", (x > y || x == 5));
+    printf("!(x == 5) = %d\n", !(x == 5));
+
+    return 0;
+}
+        </code></pre>
+
+        <div class="activity-box">
+          <strong>Atividade 3:</strong>  
+          1) Declare duas variáveis inteiras e verifique se são <em>iguais</em>.  
+          2) Teste combinações usando <code>&amp;&amp;</code> e <code>||</code>.
+        </div>
+      </section>
+
+      <!-- Slide 8 - Estruturas Condicionais (Teoria) -->
+      <section data-background-color="#232526">
+        <h2>Estruturas Condicionais</h2>
+        <ul>
+          <li><code>if/else</code> → desvio simples.</li>
+          <li><code>switch/case</code> → múltiplas opções.</li>
+          <li><em>Operador Ternário</em> → forma curta de if/else.</li>
+        </ul>
+      </section>
+
+      <!-- Slide 9 - If/Else (Código) -->
+      <section data-background-color="#232526">
+        <h2>if/else</h2>
+        <pre><code class="hljs c" data-line-numbers="4-12">
+#include <stdio.h>
+
+int main() {
+    int idade = 17;
+
+    if (idade >= 18) {
+        printf("Maior de idade\n");
+    } else {
+        printf("Menor de idade\n");
+    }
+
+    return 0;
+}
+        </code></pre>
+
+        <div class="activity-box">
+          <strong>Atividade 4:</strong>  
+          Peça ao usuário que digite uma idade e informe se é <strong>Maior</strong> ou <strong>Menor</strong> de idade.
+        </div>
+      </section>
+
+      <!-- Slide 10 - switch/case (Código) -->
+      <section data-background-color="#232526">
+        <h2>switch/case</h2>
+        <pre><code class="hljs c" data-line-numbers="4-14">
+#include <stdio.h>
+
+int main() {
+    int opcao = 2;
+
+    switch(opcao) {
+        case 1:
+            printf("Opção 1\n");
+            break;
+        case 2:
+            printf("Opção 2\n");
+            break;
+        default:
+            printf("Opção inválida\n");
+    }
+
+    return 0;
+}
+        </code></pre>
+
+        <div class="activity-box">
+          <strong>Atividade 5:</strong>  
+          Peça um número de 1 a 4 e imprima a estação do ano correspondente.
+        </div>
+      </section>
+
+      <!-- Slide 11 - Operador Ternário -->
+      <section data-background-color="#232526">
+        <h2>Operador Ternário</h2>
+        <pre><code class="hljs c" data-line-numbers="3-8">
+#include <stdio.h>
+
+int main() {
+    int x = 10, y = 20;
+    int maior = (x > y) ? x : y;
+
+    printf("O maior valor é: %d\n", maior);
+
+    return 0;
+}
+        </code></pre>
+
+        <div class="activity-box">
+          <strong>Atividade 6:</strong>  
+          Dada <code>char sexo</code> (M/F), use o ternário para exibir “Masculino” ou “Feminino”.
+        </div>
+      </section>
+
+      <!-- Slide 12 - Desafio de Lógica -->
+      <section data-background-color="#232526">
+        <h2>Desafio de Lógica</h2>
+        <pre><code class="hljs c" data-line-numbers="4-14">
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char senha[10];
+    printf("Digite sua senha: ");
+    scanf("%s", senha);
+
+    if (strcmp(senha, "1234") == 0) {
+        printf("Acesso Permitido\n");
+    } else {
+        printf("Acesso Negado\n");
+    }
+
+    return 0;
+}
+        </code></pre>
+
+        <div class="activity-box">
+          <strong>Atividade 7:</strong>  
+          Se a senha estiver errada 3 vezes, exiba: <em>“Conta bloqueada!”</em> e encerre.
+        </div>
+      </section>
+
+      <!-- Slide 13 - Conclusão -->
+      <section data-background-color="#232526">
+        <h2>Conclusão</h2>
+        <ul>
+          <li>Vimos variáveis, operadores e condicionais em C.</li>
+          <li>Praticamos exemplos práticos e atividades.</li>
+          <li>Base sólida para avançar em estruturas de dados.</li>
+        </ul>
+        <p style="margin-top: 1em;">
+          <em>Pratique bastante e vamos progredir para algoritmos mais avançados!</em>
+        </p>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal.js -->
+  <script src="./dist/reveal.js"></script>
+  <script src="./plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({
+      // Ajustes do Reveal.js
+      center: false,
+      controls: true,
+      progress: true,
+      slideNumber: true,
+      history: true,
+      transition: 'convex',
+      plugins: [RevealHighlight]
+    });
+  </script>
+</body>
+
+</html>
